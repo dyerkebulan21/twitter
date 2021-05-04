@@ -2,24 +2,17 @@ import React from "react";
 import { makeStyles, withStyles, createStyles } from "@material-ui/core/styles";
 import {
   Grid,
-  IconButton,
+
   Typography,
   Container,
-  TextField,
   InputBase,
   Paper,
-  Avatar,
 } from "@material-ui/core";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import SearchIcon from "@material-ui/icons/Search";
-import NotificationIcon from "@material-ui/icons/NotificationsNone";
-import BookmarkIcon from "@material-ui/icons/BookmarkBorder";
-import Message from "@material-ui/icons/MailOutline";
-import ListIcon from "@material-ui/icons/ListAlt";
-import UserIcon from "@material-ui/icons/PersonOutline";
+
 import grey from "@material-ui/core/colors/grey";
 import {Tweet} from '../components/Tweet'
-
+import {SideMenu} from '../components/SideMenu'
+import theme from "../theme";
 const SearchTextField = withStyles(() =>
   createStyles({
     input: {
@@ -47,8 +40,32 @@ export const useHomeStyles = makeStyles(() => ({
     margin: 0,
   },
   sideMenuListItem: {
-    display: "flex",
-    alignItems: "center",
+    "&:hover": {
+      "& div":{
+        backgroundColor: "rgba(29,161,242, 0.1)",
+      '& h6': {
+        color: theme.palette.primary.main,
+      },
+      '& svg': {
+        fill: theme.palette.primary.main
+      }
+      }
+    },
+    "& div": {
+      display: "inline-flex",
+      alignItems: "center",
+      padding: "0px 25px 0 20px",
+      position: "relative",
+      left: -10,
+      height: 55,
+      borderRadius: "50px",
+      marginBottom: 15,
+      cursor: "pointer",
+      transition: 'background-color 0.1s ease-in-out'
+    }
+  },
+  sideMenuTweetButton: {
+    padding: theme.spacing(3)
   },
   sideMenuListItemLabel: {
     fontWeight: 700,
@@ -98,79 +115,7 @@ export const Home: React.FC = (): React.ReactElement => {
     <Container maxWidth="lg" className={classes.wrapper}>
       <Grid container spacing={3}>
         <Grid item xs={3}>
-          <ul className={classes.sideMenuList}>
-            <li className={classes.sideMenuListItem}>
-              <IconButton className={classes.logo} color="primary">
-                <TwitterIcon className={classes.logoIcon} />
-              </IconButton>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton>
-                <SearchIcon className={classes.sideMenuListItemIcon} />
-              </IconButton>
-              <Typography
-                className={classes.sideMenuListItemLabel}
-                variant="h6"
-              >
-                Поиск
-              </Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton>
-                <NotificationIcon className={classes.sideMenuListItemIcon} />
-              </IconButton>
-              <Typography
-                className={classes.sideMenuListItemLabel}
-                variant="h6"
-              >
-                Уведомления
-              </Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton>
-                <BookmarkIcon className={classes.sideMenuListItemIcon} />
-              </IconButton>
-              <Typography
-                className={classes.sideMenuListItemLabel}
-                variant="h6"
-              >
-                Сообщения
-              </Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton>
-                <Message className={classes.sideMenuListItemIcon} />
-              </IconButton>
-              <Typography
-                className={classes.sideMenuListItemLabel}
-                variant="h6"
-              >
-                Закладки
-              </Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton>
-                <ListIcon className={classes.sideMenuListItemIcon} />
-              </IconButton>
-              <Typography
-                className={classes.sideMenuListItemLabel}
-                variant="h6"
-              >
-                Список
-              </Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton>
-                <UserIcon className={classes.sideMenuListItemIcon} />
-              </IconButton>
-              <Typography
-                className={classes.sideMenuListItemLabel}
-                variant="h6"
-              >
-                Профиль
-              </Typography>
-            </li>
-          </ul>
+         <SideMenu classes={classes}/>
         </Grid>
 
         <Grid item xs={6}>
