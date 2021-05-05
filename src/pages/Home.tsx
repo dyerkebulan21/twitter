@@ -13,6 +13,7 @@ import grey from "@material-ui/core/colors/grey";
 import {Tweet} from '../components/Tweet'
 import {SideMenu} from '../components/SideMenu'
 import theme from "../theme";
+import {AddFormTweet} from '../components/AddFormTweet'
 const SearchTextField = withStyles(() =>
   createStyles({
     input: {
@@ -103,10 +104,50 @@ export const useHomeStyles = makeStyles(() => ({
     color: grey[500],
   },
   tweetFooter: {
-    width: 450,
+    maxWidth: 450,
     display: "flex",
     justifyContent: "space-between",
   },
+  addForm: {
+    padding: 20,
+},
+addFormBody: {
+    display: 'flex',
+    width: '100%',
+
+},
+addFormBottom: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+
+},
+
+addFormBottomActions: {
+    marginTop: 10,
+    paddingLeft: 70,
+
+},
+addFormBottomRight: {
+  display: 'flex',
+  alignItems: 'center',
+
+},
+tweetAvatar: {
+    width: theme.spacing(6.5),
+    height: theme.spacing(6.5),
+    marginRight: 15,
+
+},
+addFormTextarea: {
+    width: '100%',
+    border: 0,
+    fontSize: 20,
+    outline: 'none',
+    fontFamily: 'inherit',
+    resize: 'none',
+
+}
 }));
 
 export const Home: React.FC = (): React.ReactElement => {
@@ -121,10 +162,16 @@ export const Home: React.FC = (): React.ReactElement => {
         <Grid item xs={6}>
           <Paper className={classes.tweetsWrapper} variant="outlined">
             <Paper className={classes.tweetsHeader} variant="outlined">
+            
               <Typography variant="h6">Главная</Typography>
+       
             </Paper>
+            
+            <AddFormTweet classes={classes}/>
+
             <Tweet text={"Сегодня я несчастна. Но как говорил мне один дядя ‘судьба красивых женщин всегда печальна’"} classes={classes} user={{fullname: "yerkebulan", username: "dyerkebulan21", avatarUrl : "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"}}/>
           </Paper>
+          
         </Grid>
 
         <Grid item xs={3}>

@@ -92,7 +92,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
           </Typography>
           </div>
         </li>
-        <li><Button color="primary" variant="contained" fullWidth>Твитнуть</Button></li>
+        <li><Button color="primary" variant="contained" className={classes.sideMenuTweetButton} fullWidth>Твитнуть</Button></li>
 
 
     </ul>
