@@ -147,6 +147,16 @@ addFormTextarea: {
     fontFamily: 'inherit',
     resize: 'none',
 
+},
+addFormCircleProgress: {
+  position: 'relative',
+  width: 20,
+  height: 20,
+  margin: '0 10px',
+  '& .MuiCircularProgress-root': {
+    position: 'absolute',
+  },
+
 }
 }));
 
