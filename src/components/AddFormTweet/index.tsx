@@ -4,7 +4,7 @@ import { Avatar, Button, CircularProgress, IconButton, TextareaAutosize } from '
 import classNames from 'classnames'
 import Emoji from '@material-ui/icons/SentimentVerySatisfied';
 import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
-import { useHomeStyles } from '../../pages/Home';
+import { useHomeStyles } from '../../pages/Home/theme';
 
 interface AddFormProps {
     classes: ReturnType<typeof useHomeStyles>
@@ -17,6 +17,9 @@ export const AddFormTweet:React.FC<AddFormProps> = ({classes}: AddFormProps):Rea
         if(e.currentTarget) {
             setText(e.currentTarget.value)
         }
+    }
+    const handleClickAddTweet = (): void => {
+        setText('')
     }
     const countText = MAX_LENGTH - text.length
     return (
@@ -44,7 +47,7 @@ export const AddFormTweet:React.FC<AddFormProps> = ({classes}: AddFormProps):Rea
                     </div>
                         </>
                     }
-                    <Button disabled={text.length >= MAX_LENGTH} variant="contained" color="primary">
+                    <Button onClick={handleClickAddTweet} disabled={text.length >= MAX_LENGTH} variant="contained" color="primary">
                         Твитнуть
                     </Button>
                 </div>

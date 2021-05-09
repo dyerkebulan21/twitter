@@ -7,8 +7,8 @@ import Message from "@material-ui/icons/MailOutline";
 import ListIcon from "@material-ui/icons/ListAlt";
 import UserIcon from "@material-ui/icons/PersonOutline";
 import React from "react";
-import { useHomeStyles } from "../../pages/Home";
-
+import { useHomeStyles } from "../../pages/Home/theme";
+import {Modal} from '../Modal'
 interface SideMenuProps {
   classes: ReturnType<typeof useHomeStyles>;
 }
@@ -16,6 +16,13 @@ interface SideMenuProps {
 export const SideMenu: React.FC<SideMenuProps> = ({
   classes,
 }): React.ReactElement => {
+  const[visibleModal, setVisibleModal] = React.useState<boolean>(false)
+  const handleOpenModal = () => {
+    setVisibleModal(true)
+  }
+  const handleCloseModal = () => {
+    setVisibleModal(false)
+  }
   return (
     <ul className={classes.sideMenuList}>
   
@@ -92,9 +99,9 @@ export const SideMenu: React.FC<SideMenuProps> = ({
           </Typography>
           </div>
         </li>
-        <li><Button color="primary" variant="contained" className={classes.sideMenuTweetButton} fullWidth>Твитнуть</Button></li>
-
-
+        <li><Button onClick={handleOpenModal} color="primary" variant="contained" className={classes.sideMenuTweetButton} fullWidth>Твитнуть</Button></li>
+        <Modal visible={visibleModal} title="" onClose={handleCloseModal}>.....</Modal>
+       
     </ul>
   );
 };

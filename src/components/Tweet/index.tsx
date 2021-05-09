@@ -1,7 +1,7 @@
 import { Avatar, Grid, IconButton, Paper, Typography } from '@material-ui/core'
 import classNames from 'classnames'
 import React from 'react'
-import {useHomeStyles} from '../../pages/Home'
+import {useHomeStyles} from '../../pages/Home/theme'
 import Comment from "@material-ui/icons/ChatBubble";
 import RepeatIcon from "@material-ui/icons/Repeat";
 import Like from "@material-ui/icons/FavoriteBorder";

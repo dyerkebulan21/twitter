@@ -9,21 +9,19 @@ import CloseIcon from '@material-ui/icons/Close';
 interface ModalProps {
     children: React.ReactNode;
     title: string;
+    onClose: () => void;
+    visible?: boolean
 }
 
 
-export const Modal: React.FC<ModalProps> = ({title, children}:ModalProps ):React.ReactElement => {
-    const [open, setOpen] = React.useState(false)
-    // const handleClickOpen = () => {
-    //     setOpen(true)
-    // }
-    const handleClose = () => {
-        setOpen(false);
-    }
+export const Modal: React.FC<ModalProps> = ({title, children, visible = true, onClose}:ModalProps ):React.ReactElement | null => {
+
+    if(!visible) return null
+ 
     return (
-        <Dialog open={open} onClose ={handleClose} aria-labelledby = "form-control">
+        <Dialog open={visible} onClose ={onClose} aria-labelledby = "form-control">
             <DialogTitle id="form-dialog-title">
-                <IconButton onClick={handleClose} color="secondary" aria-label="iconbutton">
+                <IconButton onClick={onClose} color="secondary" aria-label="iconbutton">
                     <CloseIcon color="secondary" style={{fontSize: 26}}/>
                 </IconButton>
                 {title}
