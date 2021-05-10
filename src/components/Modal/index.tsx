@@ -8,7 +8,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 interface ModalProps {
     children: React.ReactNode;
-    title: string;
+    title?: string;
     onClose: () => void;
     visible?: boolean
 }

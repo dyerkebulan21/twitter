@@ -39,9 +39,9 @@ export const Home: React.FC = (): React.ReactElement => {
               <Typography variant="h6">Главная</Typography>
        
             </Paper>
-            
+            <div className={classes.addForm}>
             <AddFormTweet classes={classes}/>
-
+            </div>
             <Tweet text={"Сегодня я несчастна. Но как говорил мне один дядя ‘судьба красивых женщин всегда печальна’"} classes={classes} user={{fullname: "yerkebulan", username: "dyerkebulan21", avatarUrl : "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"}}/>
           </Paper>
           

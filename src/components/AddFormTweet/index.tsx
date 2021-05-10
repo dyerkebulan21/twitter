@@ -7,10 +7,11 @@ import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
 import { useHomeStyles } from '../../pages/Home/theme';
 
 interface AddFormProps {
-    classes: ReturnType<typeof useHomeStyles>
+    classes: ReturnType<typeof useHomeStyles>,
+    maxRows?: number
 }
 const MAX_LENGTH = 280
-export const AddFormTweet:React.FC<AddFormProps> = ({classes}: AddFormProps):React.ReactElement => {
+export const AddFormTweet:React.FC<AddFormProps> = ({classes, maxRows}: AddFormProps):React.ReactElement => {
     const[text,setText] = React.useState<string>('')
     const textLimirPercent = Math.round(text.length / 280 * 100)
     const handleChangeText = (e: React.FormEvent<HTMLTextAreaElement>) => {
@@ -23,10 +24,10 @@ export const AddFormTweet:React.FC<AddFormProps> = ({classes}: AddFormProps):Rea
     }
     const countText = MAX_LENGTH - text.length
     return (
-        <div className={classes.addForm}>
+        <div>
             <div className={classes.addFormBody}>
                 <Avatar className={classes.tweetAvatar} src="https://pbs.twimg.com/profile_images/1256312479027802115/i5jciPxi_400x400.jpg"></Avatar>
-                <TextareaAutosize onChange={handleChangeText} className={classes.addFormTextarea} placeholder="Что происходит" value={text}></TextareaAutosize>
+                <TextareaAutosize rowsMax={maxRows} onChange={handleChangeText} className={classes.addFormTextarea} placeholder="Что происходит" value={text}></TextareaAutosize>
             </div>
             <div className={classes.addFormBottom}>
                 <div className={classNames(classes.tweetFooter, classes.addFormBottomActions)}>

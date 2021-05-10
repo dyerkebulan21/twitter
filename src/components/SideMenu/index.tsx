@@ -9,6 +9,7 @@ import UserIcon from "@material-ui/icons/PersonOutline";
 import React from "react";
 import { useHomeStyles } from "../../pages/Home/theme";
 import {Modal} from '../Modal'
+import { AddFormTweet } from "../AddFormTweet";
 interface SideMenuProps {
   classes: ReturnType<typeof useHomeStyles>;
 }
@@ -100,7 +101,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
           </div>
         </li>
         <li><Button onClick={handleOpenModal} color="primary" variant="contained" className={classes.sideMenuTweetButton} fullWidth>Твитнуть</Button></li>
-        <Modal visible={visibleModal} title="" onClose={handleCloseModal}>.....</Modal>
+        <Modal visible={visibleModal}  onClose={handleCloseModal}><div style={{width: 550}}><AddFormTweet maxRows={15} classes={classes}/></div></Modal>
        
     </ul>
   );
