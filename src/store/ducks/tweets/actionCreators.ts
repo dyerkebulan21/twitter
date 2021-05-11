@@ -14,3 +14,5 @@ export const setTweets = (payload: TweetsState['items']): SetTweetsActionInterfa
     type: TweetsActionType.SET_TWEETS,
     payload
 })
+
+export type TweetsActions = SetTweetsActionInterface
