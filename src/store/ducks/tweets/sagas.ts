@@ -5,6 +5,6 @@ export function* fetchTweets(){
     console.log("test")
 }
 
-export function* watchIncrementAsync() {
+export function* tweetsSaga() {
     yield takeEvery(TweetsActionType.FETCH_TWEETS, fetchTweets)
 }
