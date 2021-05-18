@@ -23,8 +23,19 @@ import {SideMenu} from '../../components/SideMenu'
 import {AddFormTweet} from '../../components/AddFormTweet'
 import { useHomeStyles } from "./theme";
 import PersonAddIcon from '@material-ui/icons/PermIdentity';
+
+import {useDispatch, useSelector} from 'react-redux'
+import { fetchTweets } from "../../store/ducks/tweets/actionCreators";
+import { selectedTweetsItem, selectIsTweetsLoading } from "../../store/ducks/tweets/selectors";
+import CircularProgress from '@material-ui/core/CircularProgress';
 export const Home: React.FC = (): React.ReactElement => {
-  const classes = useHomeStyles()
+  const dispatch = useDispatch();
+  const classes = useHomeStyles();
+  const tweets = useSelector(selectedTweetsItem);
+  const isLoading = useSelector(selectIsTweetsLoading)
+  React.useEffect(() => {
+    dispatch(fetchTweets())
+  },[])
   return (
     <Container maxWidth="lg" className={classes.wrapper}>
       <Grid container spacing={3}>
@@ -42,7 +53,8 @@ export const Home: React.FC = (): React.ReactElement => {
             <div className={classes.addForm}>
             <AddFormTweet classes={classes}/>
             </div>
-            <Tweet text={"Сегодня я несчастна. Но как говорил мне один дядя ‘судьба красивых женщин всегда печальна’"} classes={classes} user={{fullname: "yerkebulan", username: "dyerkebulan21", avatarUrl : "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"}}/>
+            {isLoading ? <div style={{textAlign: "center", marginTop: 30}}><CircularProgress color="primary"/></div> : tweets.map((tweet) =>  <Tweet text={tweet.text} classes={classes} user={tweet.user}/>)}
+           
           </Paper>
           
         </Grid>
