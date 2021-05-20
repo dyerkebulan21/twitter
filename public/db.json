@@ -109,7 +109,7 @@
       "avatarUrl": "https://source.unsplash.com/random/100x100?1"
     }
   ],
-  "tags": [{"name": "Навальный", "count": 3421}, {"name": "Ирина Кайратовна", "count": 3421}, {"name": "Кайрат Нуртас", "count": 3421}],
+  "tags": [{"name": "Навальный", "count": 3421, "_id": 123}, {"name": "Ирина Кайратовна", "count": 3421, "_id": 53213}, {"name": "Кайрат Нуртас", "count": 3421, "_id": 16942}],
   "user": {
     "_id": "5f625ff6adc4f5a905596a37",
     "fullname": "Yerkebulan Dyussembayev",

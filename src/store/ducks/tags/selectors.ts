@@ -11,4 +11,4 @@ export const selectIsTagsLoading = (state: RootState): boolean => selectTagsLoad
 
 export const selectIsTagsLoaded = (state: RootState): boolean => selectTagsLoading(state) === LoadingState.LOADED
 
-export const selectedTagsItem = createSelector(selectTags, (tweets) => tweets.items)
+export const selectedTagsItem = createSelector(selectTags, (tags) => tags.items)

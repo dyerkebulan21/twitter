@@ -10,6 +10,7 @@ import React from "react";
 import { useHomeStyles } from "../../pages/Home/theme";
 import {Modal} from '../Modal'
 import { AddFormTweet } from "../AddFormTweet";
+import {Link} from 'react-router-dom'
 interface SideMenuProps {
   classes: ReturnType<typeof useHomeStyles>;
 }
@@ -29,9 +30,11 @@ export const SideMenu: React.FC<SideMenuProps> = ({
   
         <li className={classes.sideMenuListItem}>
         
-          <IconButton className={classes.logo} color="primary">
+        <Link to="/home">
+        <IconButton className={classes.logo} color="primary">
             <TwitterIcon className={classes.logoIcon} />
           </IconButton>
+        </Link>
       
         </li>
      

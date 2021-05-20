@@ -164,6 +164,10 @@ export const useHomeStyles = makeStyles(() => ({
     '&:hover': {
       backgroundColor: '#edf3f6',
     },
+    '& a': {
+      color: "inherit",
+      textDecoration: "none"
+    }
   },
   rightSideBlock: {
     backgroundColor: '#F5F8FA',
