@@ -176,6 +176,10 @@ export const useHomeStyles = makeStyles(() => ({
     '& .MuiList-root': {
       paddingTop: 0,
     },
+  },
+  tweetWrapper: {
+    color: 'inherit',
+    textDecoration: "none"
   }
   
 

@@ -48,15 +48,16 @@ export const Home: React.FC = (): React.ReactElement => {
         <Grid item xs={3}>
           <SideMenu classes={classes} />
         </Grid>
-
         <Grid item xs={6}>
           <Paper className={classes.tweetsWrapper} variant="outlined">
             <Paper className={classes.tweetsHeader} variant="outlined">
               <Typography variant="h6">Главная</Typography>
             </Paper>
+            <Route path={["/home", "/home/search"]} exact>
             <div className={classes.addForm}>
               <AddFormTweet classes={classes} />
             </div>
+            </Route>
             <Route path="/home" exact>
             {isLoading ? (
               <div style={{ textAlign: "center", marginTop: 30 }}>
@@ -69,6 +70,7 @@ export const Home: React.FC = (): React.ReactElement => {
                   text={tweet.text}
                   classes={classes}
                   user={tweet.user}
+                  _id={tweet._id}
                 />
               ))
             )}
