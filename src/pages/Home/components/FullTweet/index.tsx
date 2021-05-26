@@ -1,11 +1,10 @@
 import React from 'react'
 
-export const FullTweet = () => {
+
+export const FullTweet:React.FC = ():React.ReactElement => {
     return (
         <div>
-            <button>
-                Sd
-            </button>
+              твит
         </div>
     )
 }

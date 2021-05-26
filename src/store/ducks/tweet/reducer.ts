@@ -13,6 +13,7 @@ export const tweetReducer = produce((draft:Draft<TweetState>, action: TweetActio
    
     switch(action.type) {
         case TweetActionType.SET_DATA: 
+            //@ts-ignore
             draft.data = action.payload
             draft.loadingState = LoadingState.LOADED
             break 

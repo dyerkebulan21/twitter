@@ -34,6 +34,8 @@ import { fetchTags } from "../../store/ducks/tags/actionCreators";
 import { Tag } from "../../components/Tags";
 import { Route } from "react-router-dom";
 import { BackButton } from "../../components/BackButton";
+import { FullTweet } from "./components/FullTweet";
+import { fetchTweetData } from "../../store/ducks/tweet/actionCreators";
 export const Home: React.FC = (): React.ReactElement => {
   const dispatch = useDispatch();
   const classes = useHomeStyles();
@@ -42,6 +44,7 @@ export const Home: React.FC = (): React.ReactElement => {
   React.useEffect(() => {
     dispatch(fetchTweets());
     dispatch(fetchTags());
+ 
   }, [dispatch]);
   return (
     <Container maxWidth="lg" className={classes.wrapper}>
@@ -86,6 +89,7 @@ export const Home: React.FC = (): React.ReactElement => {
               ))
             )}
             </Route>
+            <Route path="/home/tweet/:id" component={FullTweet}/>
           </Paper>
         </Grid>
 

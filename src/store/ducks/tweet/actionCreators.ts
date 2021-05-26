@@ -19,13 +19,13 @@ export interface SetTweetDataLoadingActionInterface extends Action<TweetActionTy
 }
 
 
-export interface FetchTweetActionInterface extends Action<TweetActionType> {
+export interface FetchTweetDataActionInterface extends Action<TweetActionType> {
     type: TweetActionType.FETCH_DATA,
- 
+    payload: string
 }
-export const fetchTweet = (): FetchTweetActionInterface => ({
+export const fetchTweetData = (payload:string): FetchTweetDataActionInterface => ({
     type: TweetActionType.FETCH_DATA,
-    
+    payload
 })
 
 export interface RootState {
@@ -44,4 +44,4 @@ export const setLoadingTweet = (payload: LoadingState): SetTweetDataLoadingActio
 
 
 
-export type TweetActions = SetTweetDataActionInterface | SetTweetDataLoadingActionInterface | FetchTweetActionInterface
+export type TweetActions = SetTweetDataActionInterface | SetTweetDataLoadingActionInterface | FetchTweetDataActionInterface
