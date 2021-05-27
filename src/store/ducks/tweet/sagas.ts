@@ -7,8 +7,8 @@ export function* fetchTweetRequest({payload: tweetId}: FetchTweetDataActionInter
   
     try{
         //@ts-ignore
-        const item = yield call(TweetsApi.fetchTweets, tweetId)
-        yield put(setTweet(item))
+        const item: Tweet[] = yield call(TweetsApi.fetchTweets, tweetId)
+        yield put(setTweet(item[0]))
     }catch(err) {
         yield put(setLoadingTweet(LoadingState.ERROR))
     }
