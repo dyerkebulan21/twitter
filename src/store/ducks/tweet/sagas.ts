@@ -1,4 +1,4 @@
-import {call, put, takeEvery} from 'redux-saga/effects'
+import {call, put,  takeLatest} from 'redux-saga/effects'
 import { TweetsApi } from '../../../services/api/tweetsApi'
 import { FetchTweetDataActionInterface, setLoadingTweet, setTweet, TweetActionType, } from './actionCreators'
 import { LoadingState } from './contracts/state'
@@ -7,7 +7,7 @@ export function* fetchTweetRequest({payload: tweetId}: FetchTweetDataActionInter
   
     try{
         //@ts-ignore
-        const item: Tweet[] = yield call(TweetsApi.fetchTweets, tweetId)
+        const item: Tweet[] = yield call(TweetsApi.fetchTweet, tweetId)
         yield put(setTweet(item[0]))
     }catch(err) {
         yield put(setLoadingTweet(LoadingState.ERROR))
@@ -15,5 +15,5 @@ export function* fetchTweetRequest({payload: tweetId}: FetchTweetDataActionInter
 }
 
 export function* tweetSaga() {
-    yield takeEvery(TweetActionType.FETCH_DATA, fetchTweetRequest)
+    yield takeLatest(TweetActionType.FETCH_DATA, fetchTweetRequest)
 }
