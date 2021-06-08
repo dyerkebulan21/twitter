@@ -14,6 +14,17 @@ export function* fetchTweetsRequest(){
     }
 }
 
+export function* addTweetsRequest(){
+  
+    try{
+        //@ts-ignore
+        const item = yield call(TweetsApi.addTweet)
+        yield put(addTweet(item))
+    }catch(err) {
+        yield put(setLoadingTweets(LoadingState.ERROR))
+    }
+}
+
 export function* tweetsSaga() {
     yield takeLatest(TweetsActionType.FETCH_TWEETS, fetchTweetsRequest)
 }
