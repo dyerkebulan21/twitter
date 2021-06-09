@@ -5,6 +5,8 @@ import classNames from 'classnames'
 import Emoji from '@material-ui/icons/SentimentVerySatisfied';
 import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
 import { useHomeStyles } from '../../pages/Home/theme';
+import { useDispatch } from 'react-redux';
+import {  fetchAddTweet } from '../../store/ducks/tweets/actionCreators';
 
 interface AddFormProps {
     classes: ReturnType<typeof useHomeStyles>,
@@ -12,6 +14,7 @@ interface AddFormProps {
 }
 const MAX_LENGTH = 280
 export const AddFormTweet:React.FC<AddFormProps> = ({classes, maxRows}: AddFormProps):React.ReactElement => {
+    const dispatch = useDispatch()
     const[text,setText] = React.useState<string>('')
     const textLimirPercent = Math.round(text.length / 280 * 100)
     const handleChangeText = (e: React.FormEvent<HTMLTextAreaElement>) => {
@@ -20,7 +23,9 @@ export const AddFormTweet:React.FC<AddFormProps> = ({classes, maxRows}: AddFormP
         }
     }
     const handleClickAddTweet = (): void => {
+        dispatch(fetchAddTweet(text))
         setText('')
+        
     }
     const countText = MAX_LENGTH - text.length
     return (

@@ -6,7 +6,8 @@ export enum TweetsActionType {
     SET_TWEETS = 'tweets/SET_TWEETS',
     FETCH_TWEETS = 'tweets/FETCH_TWEETS',
     LOADING_TWEETS = 'tweets/LOADING_TWEETS',
-    ADD_TWEETS = 'tweets/ADD_TWEET'
+    FETCH_ADD_TWEET = 'tweets/FETCH_ADD_TWEET',
+    ADD_TWEET = 'tweets/ADD_TWEET'
 }
 
 export interface SetTweetsActionInterface extends Action<TweetsActionType> {
@@ -14,8 +15,13 @@ export interface SetTweetsActionInterface extends Action<TweetsActionType> {
     payload: TweetsState['items']
 }
 
-export interface AddTweetsActionInterface extends Action<TweetsActionType> {
-    type: TweetsActionType.ADD_TWEETS,
+export interface FetchAddTweetActionInterface extends Action<TweetsActionType> {
+    type: TweetsActionType.FETCH_ADD_TWEET,
+    payload: string
+}
+
+export interface AddTweetActionInterface extends Action<TweetsActionType> {
+    type: TweetsActionType.ADD_TWEET,
     payload: Tweet
 }
 
@@ -43,8 +49,13 @@ export const setTweets = (payload: TweetsState['items']): SetTweetsActionInterfa
     payload
 })
 
-export const addTweet = (payload: Tweet):AddTweetsActionInterface => ({
-    type: TweetsActionType.ADD_TWEETS,
+export const fetchAddTweet = (payload: string):FetchAddTweetActionInterface => ({
+    type: TweetsActionType.FETCH_ADD_TWEET,
+    payload
+})
+
+export const addTweet = (payload: Tweet): AddTweetActionInterface => ({
+    type: TweetsActionType.ADD_TWEET,
     payload
 })
 
