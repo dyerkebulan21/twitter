@@ -23,6 +23,9 @@ export const tweetsReducer = produce((draft:Draft<TweetsState>, action: TweetsAc
         case TweetsActionType.LOADING_TWEETS: 
             draft.loadingState = action.payload
             break 
+        case TweetsActionType.ADD_TWEET: 
+            draft.items.push(action.payload)
+            break 
         default: 
             break;
     }

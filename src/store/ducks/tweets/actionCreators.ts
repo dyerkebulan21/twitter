@@ -66,4 +66,4 @@ export const setLoadingTweets = (payload: LoadingState): SetTweetsLoadingActionI
 
 
 
-export type TweetsActions = SetTweetsActionInterface | SetTweetsLoadingActionInterface | FetchTweetsActionInterface
+export type TweetsActions = SetTweetsActionInterface | SetTweetsLoadingActionInterface | FetchTweetsActionInterface | FetchAddTweetActionInterface | AddTweetActionInterface
