@@ -1,10 +1,11 @@
 import produce, {Draft} from 'immer'
 import { TweetsActions,TweetsActionType } from './actionCreators'
-import { TweetsState, LoadingState } from './contracts/state'
+import { TweetsState, LoadingState, addFormState } from './contracts/state'
 
 
 const initialState: TweetsState = {
     items: [],
+    addFormState: addFormState.NEVER,
     loadingState: LoadingState.NEVER
 }
 
