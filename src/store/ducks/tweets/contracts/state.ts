@@ -6,7 +6,6 @@ export enum LoadingState {
 }
 
 export enum addFormState {
-
     ERROR ="ERROR",
     NEVER = "NEVER",
     LOADING = "LOADING"
