@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {  fetchAddTweet } from '../../store/ducks/tweets/actionCreators';
 
 import { selectAddFormState } from '../../store/ducks/tweets/selectors';
-import Snackbar from '@material-ui/core/Snackbar';
+import Alert from '@material-ui/lab/Alert';
 import { addFormState } from '../../store/ducks/tweets/contracts/state';
 interface AddFormProps {
     classes: ReturnType<typeof useHomeStyles>,
@@ -19,7 +19,7 @@ const MAX_LENGTH = 280
 export const AddFormTweet:React.FC<AddFormProps> = ({classes, maxRows}: AddFormProps):React.ReactElement => {
     const AddFormState = useSelector(selectAddFormState)
     const[text,setText] = React.useState<string>('')
-    const[visibleNotification,setVisibleNotification] = React.useState<boolean>(false)
+
     const dispatch = useDispatch()
   
     const textLimirPercent = Math.round(text.length / 280 * 100)
@@ -33,28 +33,16 @@ export const AddFormTweet:React.FC<AddFormProps> = ({classes, maxRows}: AddFormP
         setText('')
         
     }
-    React.useEffect(() => {
-        if(AddFormState === addFormState.ERROR) {
-            setVisibleNotification(true)
-        }
-    }, [AddFormState])
+   
 
-    const handleCloseNotification = () => {
-        setVisibleNotification(false)
-    }
+  
     const countText = MAX_LENGTH - text.length
     return (
         
         <div>
          
             <div className={classes.addFormBody}>
-            <Snackbar
-  anchorOrigin={{vertical: "top", horizontal: "right"}}
-  open={visibleNotification}
-  onClose={handleCloseNotification}
-  message="Ошибка при добавление твита"
-  key={"topright"}
-/>
+           
                 <Avatar className={classes.tweetAvatar} src="https://pbs.twimg.com/profile_images/1256312479027802115/i5jciPxi_400x400.jpg"></Avatar>
                 <TextareaAutosize rowsMax={maxRows} onChange={handleChangeText} className={classes.addFormTextarea} placeholder="Что происходит" value={text}></TextareaAutosize>
             </div>
@@ -82,6 +70,8 @@ export const AddFormTweet:React.FC<AddFormProps> = ({classes, maxRows}: AddFormP
                     </Button>
                 </div>
             </div>
+            {AddFormState === addFormState.ERROR && <Alert  severity="error">Ошибка при добавление твита :( </Alert>
+        }
         </div>
     )
 }
