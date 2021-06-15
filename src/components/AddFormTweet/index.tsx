@@ -66,7 +66,7 @@ export const AddFormTweet:React.FC<AddFormProps> = ({classes, maxRows}: AddFormP
                         </>
                     }
                     <Button onClick={handleClickAddTweet} disabled={text.length >= MAX_LENGTH} variant="contained" color="primary">
-                        Твитнуть
+                        {AddFormState === addFormState.LOADING ? <CircularProgress/> : "Твитнуть"}
                     </Button>
                 </div>
             </div>
