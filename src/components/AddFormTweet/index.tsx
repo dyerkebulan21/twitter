@@ -60,13 +60,13 @@ export const AddFormTweet:React.FC<AddFormProps> = ({classes, maxRows}: AddFormP
                         <>
                         <span >{countText}</span>
                     <div className={classes.addFormCircleProgress}>
-                        <CircularProgress style={text.length >= MAX_LENGTH ? {color: "red"} : undefined} variant="static" size={20} value={text.length >= MAX_LENGTH ? 100 : textLimirPercent} thickness={5}/>
+                        <CircularProgress style={text.length >= MAX_LENGTH ? {color: 'red'} : undefined} variant="static" size={20} value={text.length >= MAX_LENGTH ? 100 : textLimirPercent} thickness={5}/>
                         <CircularProgress style={{color: 'rgba(0,0,0,0.1)'}} variant="static" size={20} value={100} thickness={5}/>
                     </div>
                         </>
                     }
-                    <Button onClick={handleClickAddTweet} disabled={text.length >= MAX_LENGTH} variant="contained" color="primary">
-                        {AddFormState === addFormState.LOADING ? <CircularProgress/> : "Твитнуть"}
+                    <Button onClick={handleClickAddTweet} disabled={AddFormState === addFormState.LOADING || text.length >= MAX_LENGTH} variant="contained" color="primary">
+                        {AddFormState === addFormState.LOADING ? <CircularProgress size={16} color={"inherit"}/> : "Твитнуть"}
                     </Button>
                 </div>
             </div>
