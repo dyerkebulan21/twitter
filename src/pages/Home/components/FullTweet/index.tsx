@@ -53,23 +53,26 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
   console.log(tweetData);
   if (typeof tweetData !== "undefined") {
     return (
-      <Paper className={classNames(classes.tweetsHeader, classes.tweet)}>
-        <Grid container spacing={3}>
-          <Grid item xs={1}>
+      <Paper className={classes.fullTweet}>
+        <div className={classNames(classes.tweetsHeaderUser)}>
             <Avatar alt="Remy Sharp" src={tweetData.user.avatarUrl} />
-          </Grid>
-          <Grid item xs={11}>
+            <Typography>
             <b>{tweetData.user.fullname}</b>
+            <div>
             <span className={classes.tweetUserName}>
               @{tweetData.user.username}
             </span>
+         
             &nbsp;
             <span className={classes.tweetUserName}>·</span>&nbsp;
             <span className={classes.tweetUserName}>1 час</span>&nbsp;
-            <Typography variant="body1" gutterBottom>
+            </div>
+            </Typography>
+            </div>
+            <Typography className={classes.fullTweetText} gutterBottom>
               {tweetData.text}
             </Typography>
-            <div>
+          
               <div className={classes.tweetFooter}>
                 <div>
                   <IconButton>
@@ -96,9 +99,8 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
                   <span>1</span>
                 </div>
               </div>
-            </div>
-          </Grid>
-        </Grid>
+      
+     
       </Paper>
     );
   }

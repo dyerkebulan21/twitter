@@ -70,6 +70,18 @@ export const useHomeStyles = makeStyles(() => ({
         fontWeight: 800,
       },
     },
+    tweetsHeaderUser: {
+      display: 'flex',
+      alignItems: 'center',
+  
+    },
+    fullTweet: {
+      padding: 22
+    },
+    fullTweetText: {
+      fontSize: 24,
+      marginTop: 13
+    },
     tweet: {
       paddingTop: 15,
       paddingLeft: 15,
