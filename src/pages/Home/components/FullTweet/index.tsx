@@ -62,7 +62,6 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
             <span className={classes.tweetUserName}>
               @{tweetData.user.username}
             </span>
-         
             &nbsp;
             <span className={classes.tweetUserName}>·</span>&nbsp;
             <span className={classes.tweetUserName}>1 час</span>&nbsp;

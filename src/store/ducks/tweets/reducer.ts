@@ -31,7 +31,7 @@ export const tweetsReducer = produce((draft:Draft<TweetsState>, action: TweetsAc
             draft.addFormState = addFormState.LOADING
             break 
         case TweetsActionType.ADD_TWEET: 
-            draft.items.push(action.payload)
+            draft.items.splice(0,0,action.payload)
             draft.addFormState = addFormState.NEVER
             break
         default: 
