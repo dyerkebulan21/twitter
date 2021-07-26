@@ -98,8 +98,6 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
                   <span>1</span>
                 </div>
               </div>
-      
-     
       </Paper>
     );
   }
