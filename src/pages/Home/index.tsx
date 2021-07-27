@@ -35,7 +35,7 @@ import { Tag } from "../../components/Tags";
 import { Route } from "react-router-dom";
 import { BackButton } from "../../components/BackButton";
 import { FullTweet } from "./components/FullTweet";
-import { fetchTweetData } from "../../store/ducks/tweet/actionCreators";
+//import { fetchTweetData } from "../../store/ducks/tweet/actionCreators";
 export const Home: React.FC = (): React.ReactElement => {
   const dispatch = useDispatch();
   const classes = useHomeStyles();

@@ -1,4 +1,4 @@
-import {call, put, takeEvery, takeLatest} from 'redux-saga/effects'
+import {call, put,  takeLatest} from 'redux-saga/effects'
 import { TagsApi } from '../../../services/api/tagsApi'
 import { setLoadingTags, setTags, TagsActionType, } from './actionCreators'
 import { LoadingState } from './contracts/state'

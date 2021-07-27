@@ -1,7 +1,6 @@
 import {
   Avatar,
   CircularProgress,
-  Grid,
   IconButton,
   Paper,
   Typography,
@@ -41,7 +40,7 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
     return () => {
       dispatch(setTweet(undefined));
     };
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   if (isTweetLoading) {
     return (
