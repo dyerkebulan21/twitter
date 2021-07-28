@@ -9,11 +9,13 @@ import Comment from "@material-ui/icons/ChatBubble";
 import RepeatIcon from "@material-ui/icons/Repeat";
 import Like from "@material-ui/icons/FavoriteBorder";
 import ShareIcon from "@material-ui/icons/Reply";
+import { formatDate } from "../../utils/formatDate";
 
 interface TweetProps {
   classes: ReturnType<typeof useHomeStyles>;
   text: string;
-  _id: number,
+  _id: number;
+  createdAt: string;
   user: {
     username: string;
     fullname: string;
@@ -26,26 +28,26 @@ export const Tweet: React.FC<TweetProps> = ({
   text,
   _id,
   classes,
+  createdAt,
 }): React.ReactElement => {
   return (
     <Link to={`/home/tweet/${_id}`} className={classes.tweetWrapper}>
       <Paper className={classNames(classes.tweetsHeader, classes.tweet)}>
         <Grid container spacing={3}>
           <Grid item xs={1}>
-            <Avatar
-              alt="Remy Sharp"
-              src={user.avatarUrl}
-            />
+            <Avatar alt="Remy Sharp" src={user.avatarUrl} />
           </Grid>
           <Grid item xs={11}>
             <b>{user.fullname}</b>{" "}
-
-            <span  className={classes.tweetUserName}>@{user.username}</span>&nbsp;
-            <span className={classes.tweetUserName}>·
-</span>&nbsp;
-            <span className={classes.tweetUserName}>1 час</span>&nbsp;
+            <span className={classes.tweetUserName}>@{user.username}</span>
+            &nbsp;
+            <span className={classes.tweetUserName}>·</span>&nbsp;
+            <span className={classes.tweetUserName}>
+              {formatDate(new Date(createdAt))}
+            </span>
+            &nbsp;
             <Typography variant="body1" gutterBottom>
-             {text}
+              {text}
             </Typography>
             <div>
               <div className={classes.tweetFooter}>

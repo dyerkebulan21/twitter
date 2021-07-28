@@ -25,6 +25,7 @@ import {
 
 import { useHomeStyles } from "../../theme";
 import classNames from "classnames";
+import { format } from "date-fns";
 
 export const FullTweet: React.FC = (): React.ReactElement | null => {
   const dispatch = useDispatch();
@@ -54,49 +55,55 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
     return (
       <Paper className={classes.fullTweet}>
         <div className={classNames(classes.tweetsHeaderUser)}>
-            <Avatar alt="Remy Sharp" src={tweetData.user.avatarUrl} />
-            <Typography>
+          <Avatar alt="Remy Sharp" src={tweetData.user.avatarUrl} />
+          <Typography>
             <b>{tweetData.user.fullname}</b>
             <div>
-            <span className={classes.tweetUserName}>
-              @{tweetData.user.username}
-            </span>
-            &nbsp;
-            <span className={classes.tweetUserName}>·</span>&nbsp;
-            <span className={classes.tweetUserName}>1 час</span>&nbsp;
+              <span className={classes.tweetUserName}>
+                @{tweetData.user.username}
+              </span>
+              &nbsp;
+              <span className={classes.tweetUserName}>
+                {format(new Date(tweetData.createdAt), "H:mm")}
+              </span>
+              &nbsp;
+              <span className={classes.tweetUserName}>
+                {format(new Date(tweetData.createdAt), "dd MMM. yyyy г.")}
+              </span>
+              &nbsp;
             </div>
-            </Typography>
-            </div>
-            <Typography className={classes.fullTweetText} gutterBottom>
-              {tweetData.text}
-            </Typography>
-          
-              <div className={classes.tweetFooter}>
-                <div>
-                  <IconButton>
-                    <Comment style={{ fontSize: 20 }} />
-                  </IconButton>
-                  <span>1</span>
-                </div>
-                <div>
-                  <IconButton>
-                    <RepeatIcon style={{ fontSize: 20 }} />
-                  </IconButton>
-                  <span>1</span>
-                </div>
-                <div>
-                  <IconButton>
-                    <Like style={{ fontSize: 20 }} />
-                  </IconButton>
-                  <span>1</span>
-                </div>
-                <div>
-                  <IconButton>
-                    <ShareIcon style={{ fontSize: 20 }} />
-                  </IconButton>
-                  <span>1</span>
-                </div>
-              </div>
+          </Typography>
+        </div>
+        <Typography className={classes.fullTweetText} gutterBottom>
+          {tweetData.text}
+        </Typography>
+
+        <div className={classes.tweetFooter}>
+          <div>
+            <IconButton>
+              <Comment style={{ fontSize: 20 }} />
+            </IconButton>
+            <span>1</span>
+          </div>
+          <div>
+            <IconButton>
+              <RepeatIcon style={{ fontSize: 20 }} />
+            </IconButton>
+            <span>1</span>
+          </div>
+          <div>
+            <IconButton>
+              <Like style={{ fontSize: 20 }} />
+            </IconButton>
+            <span>1</span>
+          </div>
+          <div>
+            <IconButton>
+              <ShareIcon style={{ fontSize: 20 }} />
+            </IconButton>
+            <span>1</span>
+          </div>
+        </div>
       </Paper>
     );
   }

@@ -44,7 +44,6 @@ export const Home: React.FC = (): React.ReactElement => {
   React.useEffect(() => {
     dispatch(fetchTweets());
     dispatch(fetchTags());
- 
   }, [dispatch]);
   return (
     <Container maxWidth="lg" className={classes.wrapper}>
@@ -55,41 +54,41 @@ export const Home: React.FC = (): React.ReactElement => {
         <Grid item xs={6}>
           <Paper className={classes.tweetsWrapper} variant="outlined">
             <Paper className={classes.tweetsHeader} variant="outlined">
-            <Route path={["/home/search", "/home/tweet"]}>
-                <BackButton/>
+              <Route path={["/home/search", "/home/tweet"]}>
+                <BackButton />
               </Route>
               <Route path="/home/tweet">
-              <Typography variant="h6">Твитнуть</Typography>
+                <Typography variant="h6">Твитнуть</Typography>
               </Route>
-            
+
               <Route path={["/home", "/home/search"]} exact>
-              <Typography variant="h6">Твиты</Typography>
+                <Typography variant="h6">Твиты</Typography>
               </Route>
-             
             </Paper>
             <Route path={["/home", "/home/search"]} exact>
-            <div className={classes.addForm}>
-              <AddFormTweet classes={classes} />
-            </div>
+              <div className={classes.addForm}>
+                <AddFormTweet classes={classes} />
+              </div>
             </Route>
             <Route path="/home" exact>
-            {isLoading ? (
-              <div style={{ textAlign: "center", marginTop: 30 }}>
-                <CircularProgress color="primary" />
-              </div>
-            ) : (
-              tweets.map((tweet) => (
-                <Tweet
-                  key={tweet._id}
-                  text={tweet.text}
-                  classes={classes}
-                  user={tweet.user}
-                  _id={tweet._id}
-                />
-              ))
-            )}
+              {isLoading ? (
+                <div style={{ textAlign: "center", marginTop: 30 }}>
+                  <CircularProgress color="primary" />
+                </div>
+              ) : (
+                tweets.map((tweet) => (
+                  <Tweet
+                    createdAt={tweet.createdAt}
+                    key={tweet._id}
+                    text={tweet.text}
+                    classes={classes}
+                    user={tweet.user}
+                    _id={tweet._id}
+                  />
+                ))
+              )}
             </Route>
-            <Route path="/home/tweet/:id" component={FullTweet}/>
+            <Route path="/home/tweet/:id" component={FullTweet} />
           </Paper>
         </Grid>
 
