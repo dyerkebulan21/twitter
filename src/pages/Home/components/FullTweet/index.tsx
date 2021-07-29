@@ -26,7 +26,7 @@ import {
 import { useHomeStyles } from "../../theme";
 import classNames from "classnames";
 import { format } from "date-fns";
-
+import ruLang from "date-fns/locale/ru";
 export const FullTweet: React.FC = (): React.ReactElement | null => {
   const dispatch = useDispatch();
   const classes = useHomeStyles();
@@ -64,11 +64,15 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
               </span>
               &nbsp;
               <span className={classes.tweetUserName}>
-                {format(new Date(tweetData.createdAt), "H:mm")}
+                {format(new Date(tweetData.createdAt), "H:mm", {
+                  locale: ruLang,
+                })}
               </span>
               &nbsp;
               <span className={classes.tweetUserName}>
-                {format(new Date(tweetData.createdAt), "dd MMM. yyyy г.")}
+                {format(new Date(tweetData.createdAt), "dd MMM. yyyy г.", {
+                  locale: ruLang,
+                })}
               </span>
               &nbsp;
             </div>
