@@ -1,4 +1,12 @@
-import { Avatar, Grid, IconButton, Paper, Typography } from "@material-ui/core";
+import {
+  Avatar,
+  Grid,
+  IconButton,
+  Paper,
+  Typography,
+  Menu,
+  MenuItem,
+} from "@material-ui/core";
 import classNames from "classnames";
 import React from "react";
 import { useHomeStyles } from "../../pages/Home/theme";
@@ -9,6 +17,7 @@ import Comment from "@material-ui/icons/ChatBubble";
 import RepeatIcon from "@material-ui/icons/Repeat";
 import Like from "@material-ui/icons/FavoriteBorder";
 import ShareIcon from "@material-ui/icons/Reply";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { formatDate } from "../../utils/formatDate";
 
 interface TweetProps {
@@ -30,6 +39,16 @@ export const Tweet: React.FC<TweetProps> = ({
   classes,
   createdAt,
 }): React.ReactElement => {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <Link to={`/home/tweet/${_id}`} className={classes.tweetWrapper}>
       <Paper className={classNames(classes.tweetsHeader, classes.tweet)}>
@@ -48,7 +67,25 @@ export const Tweet: React.FC<TweetProps> = ({
                   {formatDate(new Date(createdAt))}
                 </span>
               </div>
-              <div></div>
+              <div>
+                <IconButton
+                  aria-label="more"
+                  aria-controls="long-menu"
+                  aria-haspopup="true"
+                  onClick={handleClick}
+                >
+                  <MoreVertIcon />
+                </IconButton>
+                <Menu
+                  id="long-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={open}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleClose}>Удалить</MenuItem>
+                </Menu>
+              </div>
             </Typography>
             &nbsp;
             <Typography variant="body1" gutterBottom>
