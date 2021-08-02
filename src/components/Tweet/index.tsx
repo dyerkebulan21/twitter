@@ -38,13 +38,18 @@ export const Tweet: React.FC<TweetProps> = ({
             <Avatar alt="Remy Sharp" src={user.avatarUrl} />
           </Grid>
           <Grid item xs={11}>
-            <b>{user.fullname}</b>{" "}
-            <span className={classes.tweetUserName}>@{user.username}</span>
-            &nbsp;
-            <span className={classes.tweetUserName}>·</span>&nbsp;
-            <span className={classes.tweetUserName}>
-              {formatDate(new Date(createdAt))}
-            </span>
+            <Typography>
+              <div>
+                <b>{user.fullname}</b>{" "}
+                <span className={classes.tweetUserName}>@{user.username}</span>
+                &nbsp;
+                <span className={classes.tweetUserName}>·</span>&nbsp;
+                <span className={classes.tweetUserName}>
+                  {formatDate(new Date(createdAt))}
+                </span>
+              </div>
+              <div></div>
+            </Typography>
             &nbsp;
             <Typography variant="body1" gutterBottom>
               {text}
