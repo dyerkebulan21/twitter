@@ -68,36 +68,40 @@ export const Tweet: React.FC<TweetProps> = ({
             <Avatar alt="Remy Sharp" src={user.avatarUrl} />
           </Grid>
           <Grid item xs={11}>
-            <Typography className={classes.tweetHeader}>
-              <div>
-                <b>{user.fullname}</b>{" "}
-                <span className={classes.tweetUserName}>@{user.username}</span>
-                &nbsp;
-                <span className={classes.tweetUserName}>·</span>&nbsp;
-                <span className={classes.tweetUserName}>
-                  {formatDate(new Date(createdAt))}
-                </span>
-              </div>
-              <div>
-                <IconButton
-                  aria-label="more"
-                  aria-controls="long-menu"
-                  aria-haspopup="true"
-                  onClick={handleClick}
-                >
-                  <MoreVertIcon />
-                </IconButton>
-                <Menu
-                  id="long-menu"
-                  anchorEl={anchorEl}
-                  keepMounted
-                  open={open}
-                  onClose={handleClose}
-                >
-                  <MenuItem onClick={handleClose}>Удалить</MenuItem>
-                </Menu>
-              </div>
-            </Typography>
+            <div className={classes.tweetContent}>
+              <Typography className={classes.tweetHeader}>
+                <div>
+                  <b>{user.fullname}</b>{" "}
+                  <span className={classes.tweetUserName}>
+                    @{user.username}
+                  </span>
+                  &nbsp;
+                  <span className={classes.tweetUserName}>·</span>&nbsp;
+                  <span className={classes.tweetUserName}>
+                    {formatDate(new Date(createdAt))}
+                  </span>
+                </div>
+                <div>
+                  <IconButton
+                    aria-label="more"
+                    aria-controls="long-menu"
+                    aria-haspopup="true"
+                    onClick={handleClick}
+                  >
+                    <MoreVertIcon />
+                  </IconButton>
+                  <Menu
+                    id="long-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={open}
+                    onClose={handleClose}
+                  >
+                    <MenuItem onClick={handleClose}>Удалить</MenuItem>
+                  </Menu>
+                </div>
+              </Typography>
+            </div>
             &nbsp;
             <Typography variant="body1" gutterBottom>
               {text}
