@@ -97,6 +97,9 @@ export const useHomeStyles = makeStyles(() => ({
     display: "flex",
     alignItems: "center",
   },
+  tweetPopupMenu: {
+    position: "absolute",
+  },
   tweetContent: {
     flex: 1,
   },
