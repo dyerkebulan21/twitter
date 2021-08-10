@@ -2,7 +2,9 @@ import * as React from "react";
 import { Button, FormControl, FormGroup } from "@material-ui/core";
 import { useStylesSignIn } from "../../../SignIn";
 import { Modal } from "../../../../components/Modal";
-
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
 interface LoginModalProps {
   open: boolean;
   onClose: () => void;
