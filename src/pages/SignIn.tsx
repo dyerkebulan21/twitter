@@ -70,6 +70,9 @@ export const useStylesSignIn = makeStyles((theme) => ({
     marginBottom: 45,
     marginTop: 20,
   },
+  loginSideField: {
+    marginBottom: 18,
+  },
   loginFormControl: {
     marginBottom: theme.spacing(2),
   },

@@ -97,7 +97,7 @@ export const useHomeStyles = makeStyles(() => ({
     display: "flex",
     alignItems: "center",
   },
-
+ 
   tweetContent: {
     flex: 1,
   },
