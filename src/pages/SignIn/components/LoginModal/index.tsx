@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 interface LoginModalProps {
   open: boolean;
-  onClose: () => void;
+  onClose: () => void,
 }
 
 const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }) => {
