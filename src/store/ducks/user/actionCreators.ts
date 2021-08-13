@@ -1,20 +1,16 @@
 import {
-  FetchUserDataActionInterface
+  SetUserDataActionInterface,
+  UserActionType,
 } from "./contracts/actionTypes";
-import {
-  User
-} from "./contracts/state";
+import { UserState } from "./contracts/state";
 
-export enum UserActionType {
-  SET_USER_DATA = "tweets/SET_USER_DATA",
- 
-}
-
-export const fetchTweets = (): FetchUserDataActionInterface => ({
+export const setUserData = (
+  payload: UserState["data"]
+): SetUserDataActionInterface => ({
   type: UserActionType.SET_USER_DATA,
-  payload:
+  payload,
 });
 
 
-export type UserActions =
-  | FetchUserDataActionInterface;
+
+export type UserActions = SetUserDataActionInterface;
