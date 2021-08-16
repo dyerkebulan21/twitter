@@ -1,36 +1,24 @@
 import produce, { Draft } from "immer";
-import { TweetsActions, TweetsActionType } from "./actionCreators";
-import { TweetsState, LoadingState, addFormState } from "./contracts/state";
+import { LoadingState } from "../tweets/contracts/state";
+import { UserActions } from "./actionCreators";
+import { UserActionsType } from "./contracts/actionTypes";
+import { UserState } from "./contracts/state";
 
-const initialState: TweetsState = {
-  items: [],
-  addFormState: addFormState.NEVER,
-  loadingState: LoadingState.NEVER,
+const initialState: UserState = {
+  data: undefined,
+  status: LoadingState.NEVER,
 };
 
-export const tweetsReducer = produce(
-  (draft: Draft<TweetsState>, action: TweetsActions) => {
+export const userReducer = produce(
+  (draft: Draft<UserState>, action: UserActions) => {
     switch (action.type) {
-      case TweetsActionType.SET_TWEETS:
-        draft.items = action.payload;
-        draft.loadingState = LoadingState.LOADED;
+      case UserActionsType.SET_USER_DATA:
+        draft.data = action.payload;
+        draft.status = LoadingState.LOADED;
         break;
-      case TweetsActionType.FETCH_TWEETS:
-        draft.items = [];
-        draft.loadingState = LoadingState.LOADING;
-        break;
-      case TweetsActionType.LOADING_TWEETS:
-        draft.loadingState = action.payload;
-        break;
-      case TweetsActionType.SET_ADD_FORM_STATE:
-        draft.addFormState = addFormState.ERROR;
-        break;
-      case TweetsActionType.FETCH_ADD_TWEET:
-        draft.addFormState = addFormState.LOADING;
-        break;
-      case TweetsActionType.ADD_TWEET:
-        draft.items.splice(0, 0, action.payload);
-        draft.addFormState = addFormState.NEVER;
+      //@ts-ignore
+      case UserActionsType.SET_LOADING_STATE:
+        draft.status = action.payload;
         break;
       default:
         break;

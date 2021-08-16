@@ -7,18 +7,18 @@ export interface RootState {
   user: UserState;
 }
 
-export enum UserActionType {
+export enum UserActionsType {
   SET_USER_DATA = "user/SET_USER_DATA",
-  SET_LOADING_DATA = "user/SET_LOADING_DATA",
+  SET_LOADING_STATE = 'user/SET_LOADING_STATE',
 }
 
-export interface SetUserDataActionInterface extends Action<UserActionType> {
-  type: UserActionType.SET_USER_DATA;
-  payload: User;
+export interface SetUserDataActionInterface extends Action<UserActionsType> {
+  type: UserActionsType.SET_USER_DATA;
+  payload: User | undefined;
 }
 
 export interface SetUserLoadingDataActionInterface
-  extends Action<UserActionType> {
-  type: UserActionType.SET_LOADING_DATA;
+  extends Action<UserActionsType> {
+  type: UserActionsType.SET_LOADING_STATE;
   payload: LoadingState;
 }

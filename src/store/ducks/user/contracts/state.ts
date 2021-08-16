@@ -14,6 +14,6 @@ export interface User {
 }
 
 export interface UserState {
-  data: User;
+  data: User | undefined;
   status: LoadingState;
 }
