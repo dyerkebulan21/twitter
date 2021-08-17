@@ -9,7 +9,13 @@ export interface RootState {
 
 export enum UserActionsType {
   SET_USER_DATA = "user/SET_USER_DATA",
-  SET_LOADING_STATE = 'user/SET_LOADING_STATE',
+  SET_LOADING_STATE = "user/SET_LOADING_STATE",
+  FETCH_SIGN_IN = "user/FETCH_SIGN_IN ",
+}
+
+export interface FetchSignInActionInterface extends Action<UserActionsType> {
+  type: UserActionsType.FETCH_SIGN_IN;
+  payload: User;
 }
 
 export interface SetUserDataActionInterface extends Action<UserActionsType> {

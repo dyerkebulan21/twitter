@@ -1,13 +1,15 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { TweetsApi } from "../../../services/api/tweetsApi";
+import { setLoadingStatusUser, setUserData } from "./actionCreators";
+import { FetchSignInActionInterface } from "./contracts/actionTypes";
 
-export function* fetchTweetsRequest() {
+export function* fetchSignInRequest({payload}:FetchSignInActionInterface) {
   try {
     //@ts-ignore
-    const items = yield call(TweetsApi.fetchTweets);
-    yield put(setTweets(items));
+    const data = yield call(AuthApi.sigin, payload);
+    yield put(setUserData(data));
   } catch (err) {
-    yield put(setLoadingTweets(LoadingState.ERROR));
+    yield put(setLoadingStatusUser(LoadingState.ERROR));
   }
 }
 
