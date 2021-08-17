@@ -16,7 +16,6 @@ export const userReducer = produce(
         draft.data = action.payload;
         draft.status = LoadingState.LOADED;
         break;
-      //@ts-ignore
       case UserActionsType.SET_LOADING_STATE:
         draft.status = action.payload;
         break;
