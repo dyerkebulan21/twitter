@@ -1,9 +1,10 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { TweetsApi } from "../../../services/api/tweetsApi";
+import { LoadingState } from "../tweets/contracts/state";
+
 import { setLoadingStatusUser, setUserData } from "./actionCreators";
 import { FetchSignInActionInterface } from "./contracts/actionTypes";
 
-export function* fetchSignInRequest({payload}:FetchSignInActionInterface) {
+export function* fetchSignInRequest({ payload }: FetchSignInActionInterface) {
   try {
     //@ts-ignore
     const data = yield call(AuthApi.sigin, payload);
@@ -14,6 +15,6 @@ export function* fetchSignInRequest({payload}:FetchSignInActionInterface) {
 }
 
 export function* tweetsSaga() {
-  yield takeLatest(TweetsActionType.FETCH_TWEETS, fetchTweetsRequest);
-  yield takeLatest(TweetsActionType.FETCH_ADD_TWEET, addTweetsRequest);
+  yield takeLatest(.FETCH_TWEETS, );
+  yield takeLatest(.FETCH_ADD_TWEET, );
 }
