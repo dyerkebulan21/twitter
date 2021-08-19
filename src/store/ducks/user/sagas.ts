@@ -2,7 +2,10 @@ import { call, put, takeLatest } from "redux-saga/effects";
 import { LoadingState } from "../tweets/contracts/state";
 
 import { setLoadingStatusUser, setUserData } from "./actionCreators";
-import { FetchSignInActionInterface, UserActionsType } from "./contracts/actionTypes";
+import {
+  FetchSignInActionInterface,
+  UserActionsType,
+} from "./contracts/actionTypes";
 
 export function* fetchSignInRequest({ payload }: FetchSignInActionInterface) {
   try {
@@ -15,6 +18,6 @@ export function* fetchSignInRequest({ payload }: FetchSignInActionInterface) {
 }
 
 export function* tweetsSaga() {
-  yield takeLatest(UserActionsType.FETCH_SIGN_IN, {});
-  yield takeLatest(UserActionsType.SET_USER_DATA, {});
+  yield takeLatest(UserActionsType.FETCH_SIGN_IN);
+  yield takeLatest(UserActionsType.SET_USER_DATA);
 }
