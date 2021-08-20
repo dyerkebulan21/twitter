@@ -18,6 +18,5 @@ export function* fetchSignInRequest({ payload }: FetchSignInActionInterface) {
 }
 
 export function* tweetsSaga() {
-  yield takeLatest(UserActionsType.FETCH_SIGN_IN);
-  yield takeLatest(UserActionsType.SET_USER_DATA);
+  yield takeLatest(UserActionsType.FETCH_SIGN_IN, fetchSignInRequest);
 }
