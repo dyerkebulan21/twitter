@@ -7,6 +7,8 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { AuthApi } from "../../../../services/api/AuthApi";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSignInRequest } from "../../../../store/ducks/user/sagas";
 interface LoginModalProps {
   open: boolean;
   onClose: () => void;
@@ -23,6 +25,7 @@ const LoginFormSchema = yup.object().shape({
 
 const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }) => {
   const classes = useStylesSignIn();
+  const dispatch = useDispatch();
   const {
     control,
     handleSubmit,
@@ -33,11 +36,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }) => {
 
   const onSubmit = async (data: LoginFormProps) => {
     try {
-      const userData = await AuthApi.signIn(data);
-      console.log(userData);
-    } catch {
-      
-    }
+      dispatch()
+    } catch {}
   };
   return (
     <Modal visible={open} onClose={onClose} title="Войти в аккаунт">

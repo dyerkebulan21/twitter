@@ -1,4 +1,5 @@
 import { Action } from "redux";
+import { LoginFormProps } from "../../../../pages/SignIn/components/LoginModal";
 import { LoadingState } from "../../tweets/contracts/state";
 
 import { User, UserState } from "./state";
@@ -15,7 +16,7 @@ export enum UserActionsType {
 
 export interface FetchSignInActionInterface extends Action<UserActionsType> {
   type: UserActionsType.FETCH_SIGN_IN;
-  payload: User;
+  payload: LoginFormProps;
 }
 
 export interface SetUserDataActionInterface extends Action<UserActionsType> {
