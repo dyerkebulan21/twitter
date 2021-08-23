@@ -1,5 +1,6 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { TweetsApi } from "../../../services/api/tweetsApi";
+import { LoadingStatus } from "../../../types";
 import { Tweet } from "../tweets/contracts/state";
 import {
   FetchTweetDataActionInterface,
@@ -7,7 +8,6 @@ import {
   setTweet,
   TweetActionType,
 } from "./actionCreators";
-import { LoadingStatus } from "./contracts/state";
 
 export function* fetchTweetRequest({
   payload: tweetId,
