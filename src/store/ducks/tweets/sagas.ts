@@ -8,7 +8,7 @@ import {
   TweetsActionType,
 } from "./actionCreators";
 import { FetchAddTweetActionInterface } from "./contracts/actionTypes";
-import { addFormState, LoadingState } from "./contracts/state";
+import { addFormState, LoadingStatus } from "./contracts/state";
 
 export function* fetchTweetsRequest() {
   try {
@@ -16,7 +16,7 @@ export function* fetchTweetsRequest() {
     const items = yield call(TweetsApi.fetchTweets);
     yield put(setTweets(items));
   } catch (err) {
-    yield put(setLoadingTweets(LoadingState.ERROR));
+    yield put(setLoadingTweets(LoadingStatus.ERROR));
   }
 }
 

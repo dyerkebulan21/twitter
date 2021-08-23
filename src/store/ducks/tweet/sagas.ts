@@ -7,7 +7,7 @@ import {
   setTweet,
   TweetActionType,
 } from "./actionCreators";
-import { LoadingState } from "./contracts/state";
+import { LoadingStatus } from "./contracts/state";
 
 export function* fetchTweetRequest({
   payload: tweetId,
@@ -16,7 +16,7 @@ export function* fetchTweetRequest({
     const item: Tweet = yield call(TweetsApi.fetchTweet, tweetId);
     yield put(setTweet(item));
   } catch (err) {
-    yield put(setLoadingTweet(LoadingState.ERROR));
+    yield put(setLoadingTweet(LoadingStatus.ERROR));
   }
 }
 

@@ -1,17 +1,12 @@
-export enum LoadingState {
-    LOADED = "LOADED",
-    ERROR ="ERROR",
-    NEVER = "NEVER",
-    LOADING = "LOADING"
-}
+import { LoadingStatus } from "../../../../types";
 
 export interface Tag {
-    name: string,
-    count: number,
-    _id: number
+  name: string;
+  count: number;
+  _id: number;
 }
 
 export interface TagsState {
-    items: Tag[],
-    loadingState: LoadingState
+  items: Tag[];
+  LoadingStatus: LoadingStatus;
 }

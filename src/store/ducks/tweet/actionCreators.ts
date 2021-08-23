@@ -1,5 +1,5 @@
 import {Action} from 'redux'
-import { LoadingState,  TweetState } from "./contracts/state";
+import { LoadingStatus,  TweetState } from "./contracts/state";
 
 export interface RootState {
     tweet: TweetState
@@ -18,7 +18,7 @@ export interface SetTweetDataActionInterface extends Action<TweetActionType> {
 
 export interface SetTweetDataLoadingActionInterface extends Action<TweetActionType> {
     type: TweetActionType.LOADING_DATA,
-    payload: LoadingState
+    payload: LoadingStatus
 }
 
 
@@ -38,7 +38,7 @@ export const setTweet = (payload: TweetState['data']): SetTweetDataActionInterfa
     payload
 })
 
-export const setLoadingTweet = (payload: LoadingState): SetTweetDataLoadingActionInterface => ({
+export const setLoadingTweet = (payload: LoadingStatus): SetTweetDataLoadingActionInterface => ({
     type: TweetActionType.LOADING_DATA,
     payload
 })

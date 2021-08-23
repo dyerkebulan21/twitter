@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { LoadingState } from "../tweets/contracts/state";
+import { LoadingStatus } from "../tweets/contracts/state";
 
 import { setLoadingStatusUser, setUserData } from "./actionCreators";
 import {
@@ -13,7 +13,7 @@ export function* fetchSignInRequest({ payload }: FetchSignInActionInterface) {
     const data = yield call(AuthApi.sigin, payload);
     yield put(setUserData(data));
   } catch (err) {
-    yield put(setLoadingStatusUser(LoadingState.ERROR));
+    yield put(setLoadingStatusUser(LoadingStatus.ERROR));
   }
 }
 

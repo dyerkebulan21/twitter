@@ -1,7 +1,7 @@
 import { Action } from "redux";
 
 import { TweetsActionType } from "../actionCreators";
-import { addFormState, LoadingState, Tweet, TweetsState } from "./state";
+import { addFormState, LoadingStatus, Tweet, TweetsState } from "./state";
 
 export interface RootState {
   tweets: TweetsState;
@@ -25,7 +25,7 @@ export interface AddTweetActionInterface extends Action<TweetsActionType> {
 export interface SetTweetsLoadingActionInterface
   extends Action<TweetsActionType> {
   type: TweetsActionType.LOADING_TWEETS;
-  payload: LoadingState;
+  payload: LoadingStatus;
 }
 
 export interface FetchTweetsActionInterface extends Action<TweetsActionType> {

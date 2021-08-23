@@ -9,6 +9,9 @@ import * as yup from "yup";
 import { AuthApi } from "../../../../services/api/AuthApi";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSignInRequest } from "../../../../store/ducks/user/sagas";
+import { fetchSignIn } from "../../../../store/ducks/user/actionCreators";
+import { LoadingStatus } from "../../../../types";
+import { selectUserLoadingStatus } from "../../../../store/ducks/user/selectors";
 interface LoginModalProps {
   open: boolean;
   onClose: () => void;
@@ -26,6 +29,7 @@ const LoginFormSchema = yup.object().shape({
 const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }) => {
   const classes = useStylesSignIn();
   const dispatch = useDispatch();
+  const loadingStatus = useSelector(selectUserLoadingStatus);
   const {
     control,
     handleSubmit,
@@ -36,9 +40,16 @@ const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }) => {
 
   const onSubmit = async (data: LoginFormProps) => {
     try {
-      dispatch()
+      dispatch(fetchSignIn(data));
     } catch {}
   };
+
+  React.useEffect(() => {
+    if (loadingStatus === "SUCCESS") {
+      dispatch(loadingStatus);
+    }
+  }, [loadingStatus]);
+
   return (
     <Modal visible={open} onClose={onClose} title="Войти в аккаунт">
       <form onSubmit={handleSubmit(onSubmit)}>

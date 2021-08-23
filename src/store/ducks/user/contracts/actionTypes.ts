@@ -1,6 +1,6 @@
 import { Action } from "redux";
 import { LoginFormProps } from "../../../../pages/SignIn/components/LoginModal";
-import { LoadingState } from "../../tweets/contracts/state";
+import { LoadingStatus } from "../../tweets/contracts/state";
 
 import { User, UserState } from "./state";
 
@@ -27,5 +27,5 @@ export interface SetUserDataActionInterface extends Action<UserActionsType> {
 export interface SetUserLoadingDataActionInterface
   extends Action<UserActionsType> {
   type: UserActionsType.SET_LOADING_STATE;
-  payload: LoadingState;
+  payload: LoadingStatus;
 }

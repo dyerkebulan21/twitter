@@ -8,7 +8,7 @@ import {
 } from "./contracts/actionTypes";
 import {
   addFormState,
-  LoadingState,
+  LoadingStatus,
   Tweet,
   TweetsState,
 } from "./contracts/state";
@@ -46,7 +46,7 @@ export const addTweet = (payload: Tweet): AddTweetActionInterface => ({
 });
 
 export const setLoadingTweets = (
-  payload: LoadingState
+  payload: LoadingStatus
 ): SetTweetsLoadingActionInterface => ({
   type: TweetsActionType.LOADING_TWEETS,
   payload,

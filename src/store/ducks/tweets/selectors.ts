@@ -1,15 +1,15 @@
 
 import { createSelector } from "reselect";
 import { RootState } from "./contracts/actionTypes";
-import { addFormState, LoadingState, TweetsState } from "./contracts/state";
+import { addFormState, LoadingStatus, TweetsState } from "./contracts/state";
 
 export const selectTweets = (state: RootState): TweetsState => state.tweets
 
-export const selectTweetsLoading = (state: RootState):LoadingState => selectTweets(state).loadingState
+export const selectTweetsLoading = (state: RootState):LoadingStatus => selectTweets(state).LoadingStatus
 
-export const selectIsTweetsLoading = (state: RootState): boolean => selectTweetsLoading(state) === LoadingState.LOADING
+export const selectIsTweetsLoading = (state: RootState): boolean => selectTweetsLoading(state) === LoadingStatus.LOADING
 
-export const selectIsTweetsLoaded = (state: RootState): boolean => selectTweetsLoading(state) === LoadingState.LOADED
+export const selectIsTweetsLoaded = (state: RootState): boolean => selectTweetsLoading(state) === LoadingStatus.LOADED
 
 export const selectAddFormState = (state: RootState): addFormState => selectTweets(state).addFormState
 
